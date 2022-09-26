@@ -45,15 +45,25 @@ export const listReducer = (state = { todoList: [], repeat: false }, action) => 
       };
 
     case LIST_EDIT_TODO: {
-      const newTodoList = state.todoList.map((data) => {
-        if(data.id === action.payload.id) {
-          return action.payload;
+      const checkNameUpdate = state.todoList.find(x => x.name === action.payload.name)
+      if(checkNameUpdate){
+        return {
+          ...state,
+          repeat: true
         }
-        return data;
-      })
-      return {
-        ...state,
-        todoList:newTodoList,
+
+      }
+      else{
+        const newTodoList = state.todoList.map((data) => {
+          if(data.id === action.payload.id) {
+            return action.payload;
+          }
+          return data;
+        })
+        return {
+          ...state,
+          todoList:newTodoList,
+        }
       }
     }
 
