@@ -22,12 +22,12 @@ const HomeScreen = () => {
 
   return (
     <>
-      <h1 className='text-info text-center'>To Do App</h1>
+      <h1 className='text-info text-center'>TO DO APP</h1>
       <Card>
         <TodoListForm setEditFormVisibility = {setEditFormVisibility} editFormVisibility={editFormVisibility} editTodo = {editTodo} cancelUpdate = {cancelUpdate} />
       </Card>
 
-      <h1 className='text-info text-center'>A To-Do List to Organize Your Work &amp;	Life</h1>
+      <h1 className='text-info text-center'>A to-do list to organize your work &amp;	life</h1>
       <TodoListList  handleEditClick={handleEditClick} editFormVisibility={editFormVisibility} />
     </>
 
