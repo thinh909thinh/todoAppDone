@@ -33,24 +33,26 @@ const TodoListList = ({handleEditClick, editFormVisibility}) => {
     return (
       <>
         {repeat && <Message variant="danger">This note is already added</Message>}
-        <ListGroup >
+        <ListGroup  >
+         
           {todoList.map((data,index) => (
-            <ListGroup.Item
-            className='mb-xxl-1'
+            <ListGroup.Item 
+            
+            className=' mb-1' 
               variant={data.complete === true ? 'success' : 'primary'}
               key={data.id}
 
             >
               <Row >
-                  <Col md={9} xs={9} style={{overflow:'hidden'}}>{index + 1} - {data.name} </Col>
+                  <Col md={9} xs={9} 	sm={9} style={{overflow:'hidden',lineHeight:'50px'}} >{index + 1} - {data.name} </Col>
 
                 {editFormVisibility === false && (
                   <>
-                      <Col md={1} xs={1}
-                      style={{display:'flex',justifyContent: 'flex-end'}}>
+                      <Col md={1} xs={1} 	sm={1} 
+                      style={{display:'flex',justifyContent: 'flex-end' }}>
                     {data.complete === true ? (
                       <Button
-                        variant='dark'
+                        variant='success'
                         onClick={() => handleNotComplete(data.name)}
                       >
                         <i className='fas fa-check'></i>
@@ -65,7 +67,7 @@ const TodoListList = ({handleEditClick, editFormVisibility}) => {
                     )}
                   </Col>
 
-                  <Col md={1} xs={1}
+                  <Col md={1} xs={1} 	sm={1}
                       style={{display:'flex',justifyContent: 'flex-end'}}>
                     {/* update item  */}
                     <Button
@@ -76,7 +78,7 @@ const TodoListList = ({handleEditClick, editFormVisibility}) => {
                     </Button>
                   </Col>
 
-                  <Col md={1} xs={1}
+                  <Col md={1} xs={1} 	sm={1}
                      style={{display:'flex',justifyContent: 'flex-end'}}>
                   {/* delete item  */}
                   <Button

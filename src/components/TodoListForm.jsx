@@ -12,7 +12,7 @@ const TodoListForm = ({setEditFormVisibility,editFormVisibility, editTodo, cance
 
   const submitHandler = (e) => {
     const todoListValue = {
-      id: Math.floor(Math.random() * 10001),
+      id: Math.floor(Math.random() * 100000000000000000000000001),
       name: item,
       complete: false,
     }
@@ -54,7 +54,7 @@ const TodoListForm = ({setEditFormVisibility,editFormVisibility, editTodo, cance
                >
                  <Form.Control
                    type='text'
-                   value={item}
+                   value={item || ''}
                    onChange={(e) => setItem(e.target.value)}
                    placeholder='Enter list'
                    required

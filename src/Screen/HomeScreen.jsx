@@ -3,7 +3,7 @@ import { Card} from 'react-bootstrap'
 import TodoListForm from '../components/TodoListForm'
 import TodoListList from '../components/TodoListList'
 
-const HomeSceen = () => {
+const HomeScreen = () => {
 
   const [editFormVisibility, setEditFormVisibility]=useState(false);
 
@@ -34,7 +34,7 @@ const HomeSceen = () => {
   )
 }
 
-export default HomeSceen;
+export default HomeScreen;
 
 // HomeSceen = App.js;
 // Form = Form;

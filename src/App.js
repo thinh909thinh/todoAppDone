@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 import FormContainer from './components/FormContainer';
-import HomeSceen from './Screen/HomeSceen';
+import HomeScreen from './Screen/HomeScreen';
 
 function App() {
   return (
     <FormContainer>
-      <HomeSceen />
+      <HomeScreen/>
     </FormContainer>
     
   );
