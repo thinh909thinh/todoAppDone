@@ -48,7 +48,7 @@ const TodoListForm = ({setEditFormVisibility,editFormVisibility, editTodo, cance
            <Form.Group controlId='inputList'>
              <Row>
              <div className='text-center' >
-               Add your todo-items
+               Add your todo-item
             </div>
                <Col md={8}
                >
@@ -72,7 +72,7 @@ const TodoListForm = ({setEditFormVisibility,editFormVisibility, editTodo, cance
       <Form.Group controlId='inputList'>
         <Row>
           <div className='text-center'>
-               Edit your todo-items
+               Edit your todo-item
           </div>
           <Col md={8}
           >
