@@ -66,7 +66,7 @@ const TodoListForm = ({ setEditFormVisibility, editFormVisibility, editTodo, can
                     <Form.Group controlId="inputList">
                         <Row>
                             <div className="text-center">Edit your todo-item</div>
-                            <Col lg={8} md={12}>
+                            <Col lg={12} md={12}>
                                 <Form.Control
                                     type="text"
                                     value={editValue || ''}
@@ -75,7 +75,7 @@ const TodoListForm = ({ setEditFormVisibility, editFormVisibility, editTodo, can
                                     required
                                 />
                             </Col>
-                            <Col lg={4} md={12} style={{ justifyContent: 'space-between' }}>
+                            <Col lg={12} md={12} style={{ justifyContent: 'space-between' }}>
                                 <Row>
                                     <Col lg={6} md={6}>
                                         <Button style={{ width: '100%' }} type="submitted">

@@ -6,7 +6,6 @@ import Message from './Message';
 
 const TodoList = ({ handleEditClick, editFormVisibility }) => {
     const data = useSelector((state) => state.todoItems);
-
     const dispatch = useDispatch();
     const { todoList, repeat } = data;
     console.log(todoList);
