@@ -1,7 +1,7 @@
 import {React, useState} from 'react'
 import { Card} from 'react-bootstrap'
-import TodoListForm from '../components/TodoListForm'
-import TodoListList from '../components/TodoListList'
+import TodoListForm from '../components/TodoForm'
+import TodoList from '../components/TodoList'
 
 const HomeScreen = () => {
 
@@ -28,14 +28,10 @@ const HomeScreen = () => {
       </Card>
 
       <h1 className='text-info text-center'>A to-do list to organize your work &amp;	life</h1>
-      <TodoListList  handleEditClick={handleEditClick} editFormVisibility={editFormVisibility} />
+      <TodoList  handleEditClick={handleEditClick} editFormVisibility={editFormVisibility} />
     </>
 
   )
 }
 
 export default HomeScreen;
-
-// HomeSceen = App.js;
-// Form = Form;
-// todo = List;
