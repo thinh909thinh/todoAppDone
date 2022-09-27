@@ -1,14 +1,16 @@
 import { React, useEffect } from 'react';
 import { Button, Col, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { addAll, addDone, deleteAll, removeDone, removeList } from '../redux/actions/listActions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './style.css';
+import { getAll, addDone, deleteAll, removeDone, removeList } from '../redux/actions/listActions';
 import Message from './Message';
 
 const TodoList = ({ handleEditClick, editFormVisibility }) => {
     const data = useSelector((state) => state.todoItems);
     const dispatch = useDispatch();
-    const { todoList, repeat } = data;
-    console.log(todoList);
+    const { todoList, repeat, notRepeat } = data;
     const handleDelete = (id) => {
         dispatch(removeList(id));
     };
@@ -24,18 +26,21 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
         dispatch(deleteAll(item));
     };
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/todos')
-            .then((res) => res.json())
-            .then((result) => {
-                dispatch(addAll(result));
-            });
+        dispatch(getAll());
     }, [dispatch]);
 
     if (todoList.length > 0) {
         return (
             <>
-                {repeat && <Message variant="danger">This note is already added</Message>}
-                <ListGroup>
+                {/* {repeat === true &&
+                    toast.warn('I use a custom id', {
+                        toastId: '',
+                    })}
+                {notRepeat === true &&
+                    toast.success('add', {
+                        toastId: '',
+                    })} */}
+                <ListGroup className="ListscrollY">
                     {todoList.map((data, index) => (
                         <ListGroup.Item
                             className=" mb-1"
@@ -43,14 +48,16 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
                             key={data.id}
                         >
                             <Row>
-                                <Col lg={9} md={6} xs={6} style={{ overflow: 'hidden' }}>
+                                <Col xl={6} xxl={6} lg={6} md={6} xs={6} style={{ overflow: 'hidden' }}>
                                     {index + 1} - {data.title}{' '}
                                 </Col>
 
                                 {editFormVisibility === false && (
                                     <>
                                         <Col
-                                            lg={1}
+                                            xl={2}
+                                            xxl={2}
+                                            lg={2}
                                             md={2}
                                             xs={2}
                                             style={{ display: 'flex', justifyContent: 'flex-end' }}
@@ -67,7 +74,9 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
                                         </Col>
 
                                         <Col
-                                            lg={1}
+                                            xl={2}
+                                            xxl={2}
+                                            lg={2}
                                             md={2}
                                             xs={2}
                                             style={{ display: 'flex', justifyContent: 'flex-end' }}
@@ -79,7 +88,9 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
                                         </Col>
 
                                         <Col
-                                            lg={1}
+                                            xl={2}
+                                            xll={2}
+                                            lg={2}
                                             md={2}
                                             xs={2}
                                             style={{ display: 'flex', justifyContent: 'flex-end' }}

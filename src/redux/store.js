@@ -3,24 +3,18 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { listReducer } from './reducers/listReducers';
 
-
-const todoItemsFromStorage =[]
-
+const todoItemsFromStorage = [];
 
 const reducer = combineReducers({
-  todoItems: listReducer,
+    todoItems: listReducer,
 });
 
 const middleware = [thunk];
 
 const initialState = {
-  todoItems: { todoList: todoItemsFromStorage },
+    todoItems: { todoList: todoItemsFromStorage },
 };
 
-const store = createStore(
-  reducer,
-  initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
-
+const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));
+console.log(initialState);
 export default store;
