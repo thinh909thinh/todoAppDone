@@ -32,14 +32,14 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
     if (todoList.length > 0) {
         return (
             <>
-                {/* {repeat === true &&
-                    toast.warn('I use a custom id', {
+                {repeat === true &&
+                    toast.warn('add false', {
                         toastId: '',
                     })}
                 {notRepeat === true &&
-                    toast.success('add', {
+                    toast.success('add ok', {
                         toastId: '',
-                    })} */}
+                    })}
                 <ListGroup className="ListscrollY">
                     {todoList.map((data, index) => (
                         <ListGroup.Item
@@ -68,7 +68,7 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
                                                 </Button>
                                             ) : (
                                                 <Button variant="primary" onClick={() => handleComplete(data.title)}>
-                                                    <i className="fa-solid fa-xmark"></i>
+                                                    <i className="fa-solid fa-bullseye"></i>
                                                 </Button>
                                             )}
                                         </Col>
