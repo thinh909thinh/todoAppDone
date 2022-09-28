@@ -110,7 +110,7 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
                 {todoList.length > 1 && (
                     <div>
                         <Button variant="danger" onClick={() => handleDeleteAll()}>
-                            <i className="fas fa-trash"></i> Deletes all
+                            <i className="fas fa-trash"></i> Delete all
                         </Button>
                     </div>
                 )}
