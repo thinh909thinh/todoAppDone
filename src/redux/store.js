@@ -12,7 +12,9 @@ const reducer = combineReducers({
 const middleware = [thunk];
 
 const initialState = {
-    todoItems: { todoList: todoItemsFromStorage },
+    todoItems: {
+        todoList: todoItemsFromStorage,
+    },
 };
 
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));
