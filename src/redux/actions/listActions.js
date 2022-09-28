@@ -9,7 +9,6 @@ import {
     LIST_ALL,
     ITEM_ADD,
 } from '../../constants/ListConstants';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 export const addList = (data) => async (dispatch, getState) => {
     console.log('data1', getState());
     dispatch({

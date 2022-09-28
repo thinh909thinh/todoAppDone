@@ -1,11 +1,10 @@
 import { React, useEffect } from 'react';
 import { Button, Col, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './style.css';
 import { getAll, addDone, deleteAll, removeDone, removeList } from '../redux/actions/listActions';
-import Message from './Message';
 
 const TodoList = ({ handleEditClick, editFormVisibility }) => {
     const data = useSelector((state) => state.todoItems);

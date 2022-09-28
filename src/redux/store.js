@@ -18,5 +18,5 @@ const initialState = {
 };
 
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware)));
-console.log(initialState);
+console.log('init: ', initialState);
 export default store;
