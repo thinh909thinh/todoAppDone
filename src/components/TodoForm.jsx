@@ -1,132 +1,110 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { setItemList, addList, handleUpdateEditSubmit } from '../redux/actions/listActions';
+import { memo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addList, handleLogoutUser } from '../redux/actions/listActions';
+
 const TodoListForm = ({ setEditFormVisibility, editFormVisibility, editTodo, cancelUpdate }) => {
+    const data = useSelector((state) => state.todoItems);
+    const { checkUserLogin } = data;
+    console.log(data);
     const dispatch = useDispatch();
     // const [list, setList] = useState();
+    const [password, setPassword] = useState();
     const [item, setItem] = useState();
-    function create(todoListValue, callback) {
-        console.log(todoListValue);
-        const options = {
-            method: 'POST',
-            body: JSON.stringify(todoListValue),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-        dispatch(setItemList(options));
-    }
-
+    const [user, setUser] = useState(false);
+    const focus = useRef();
+    const focus2 = useRef();
+    const userLogin = (todoListValue) => {
+        setUser(true);
+    };
     // submit
     const submitHandler = (e) => {
         const todoListValue = {
-            userId: 9,
-            id: Math.floor(Math.random() * 10000000001),
+            userId: +password,
             title: item,
             completed: false,
         };
         e.preventDefault();
         dispatch(addList(todoListValue));
-        create(todoListValue);
-        setItem('');
+        // setItem('');
+        setPassword('');
+        focus.current.focus();
     };
 
-    const [editValue, setEditValue] = useState();
+    // const [editValue, setEditValue] = useState();
 
-    useEffect(() => {
-        if (!editTodo) {
-            return;
-        }
-        setEditValue(editTodo.title);
-    }, [editTodo]);
+    // useEffect(() => {
+    //     if (!editTodo) {
+    //         return;
+    //     }
+    //     setEditValue(editTodo.title);
+    // }, [editTodo]);
 
-    const editSubmit = (e) => {
-        setEditFormVisibility(false);
-        e.preventDefault();
-        const todoListValue = {
-            ...editTodo,
-            title: editValue,
-        };
-        dispatch(handleUpdateEditSubmit(todoListValue));
-        // setEditValue('');
+    // const editSubmit = (e) => {
+    //     setEditFormVisibility(false);
+    //     e.preventDefault();
+    //     const todoListValue = {
+    //         ...editTodo,
+    //         title: editValue,
+    //     };
+    //     dispatch(handleUpdateEditSubmit(todoListValue));
+    //     // setEditValue('');
+    // };
+    const handleLogout = () => {
+        // lam gi day
+        dispatch(handleLogoutUser());
+        setItem('');
+        setUser(false);
     };
 
     return (
         <>
-            {editFormVisibility === false ? (
+            {!checkUserLogin ? (
                 <>
                     <Form className="mx-2 my-2" onSubmit={submitHandler}>
                         <Form.Group controlId="inputList">
                             <Row>
                                 <div className="text-center">Add your todo-item</div>
-                                <Col md={8} lg={9}>
+                                <Col md={12} lg={12}>
                                     <Form.Control
+                                        ref={focus}
                                         type="text"
                                         value={item || ''}
                                         onChange={(e) => setItem(e.target.value)}
-                                        placeholder="Enter list"
+                                        placeholder="Name"
+                                        required
+                                    />
+                                </Col>
+                                <Col md={12} lg={12}>
+                                    <Form.Control
+                                        ref={focus2}
+                                        type="password"
+                                        value={password || ''}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="Password"
                                         required
                                     />
                                 </Col>
                                 <Col md={4} lg={3} className="mt-sm-1 mt-md-0 ">
-                                    <Button type="submitted">Add Item</Button>
+                                    <Button type="submitted" onClick={userLogin}>
+                                        Login
+                                    </Button>
                                 </Col>
                             </Row>
                         </Form.Group>
                     </Form>
-                    {/* <ToastContainer
-                        position="bottom-left"
-                        autoClose={1000}
-                        hideProgressBar
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnVisibilityChange
-                        draggable
-                        pauseOnHover
-                    /> */}
                 </>
             ) : (
-                <Form className="mx-2 my-2" onSubmit={editSubmit}>
-                    <Form.Group controlId="inputList">
-                        <Row>
-                            <div className="text-center">Edit your todo-item</div>
-                            <Col lg={12} md={12}>
-                                <Form.Control
-                                    type="text"
-                                    value={editValue || ''}
-                                    onChange={(e) => setEditValue(e.target.value)}
-                                    placeholder="Enter list"
-                                    required
-                                />
-                            </Col>
-                            <Col lg={12} md={12} style={{ justifyContent: 'space-between' }}>
-                                <Row>
-                                    <Col lg={6} md={6} className="mt-1">
-                                        <Button style={{ width: '100%' }} type="submitted">
-                                            UPDATE
-                                        </Button>
-                                    </Col>
-
-                                    <Col lg={6} md={6} className="mt-1">
-                                        <Button
-                                            style={{ width: '100%' }}
-                                            type="button"
-                                            variant="success"
-                                            onClick={cancelUpdate}
-                                        >
-                                            CANCEL
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </Col>
-                        </Row>
-                    </Form.Group>
-                </Form>
+                <>
+                    {user === true ? <h1 className="text-black-50  text-center">{`Welcome  : ${item}`}</h1> : ''}
+                    <Button type="submitted" onClick={handleLogout}>
+                        Logout
+                    </Button>
+                </>
             )}
         </>
     );
 };
 
-export default TodoListForm;
+export default memo(TodoListForm);
