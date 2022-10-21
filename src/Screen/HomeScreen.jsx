@@ -29,7 +29,7 @@ const HomeScreen = () => {
                 />
             </Card>
 
-            <h1 className="text-info text-center">hello world</h1>
+            <h1 className="text-info text-center">Hello world</h1>
             <TodoList handleEditClick={handleEditClick} editFormVisibility={editFormVisibility} />
         </>
     );
