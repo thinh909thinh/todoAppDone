@@ -64,7 +64,7 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
                         >
                             <Row>
                                 <Col xl={12} xxl={12} lg={12} md={12} xs={12} style={{ overflow: 'hidden' }}>
-                                    {index + 1} - {data.title}{' '}
+                                    {index + 1}: Name - {data.title} : password - {data.id}
                                 </Col>
 
                                 {editFormVisibility === false && (

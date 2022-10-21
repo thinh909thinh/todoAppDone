@@ -18,13 +18,16 @@ export const listReducer = (state = { todoList: [], checkUserLogin: false }, act
         // them moi
         case LIST_ADD:
             const listCheck = action.payload;
-
+            const listUser = state.todoList.map((todo, index) => {
+                return {
+                    name: todo.title,
+                    password: todo.id,
+                };
+            });
             for (var i = 0; i < state.todoList.length; i++) {
-                console.log('test', typeof state.todoList[i], i);
-
                 const checkUser =
-                    Object.values(state.todoList[i]).includes(listCheck.userId) &&
-                    Object.values(state.todoList[i]).includes(listCheck.title);
+                    Object.values(listUser[i]).includes(listCheck.password) &&
+                    Object.values(listUser[i]).includes(listCheck.title);
                 if (checkUser === true) {
                     console.log('test', checkUser);
                     return {

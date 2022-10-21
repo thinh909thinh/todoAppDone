@@ -21,7 +21,7 @@ const TodoListForm = ({ setEditFormVisibility, editFormVisibility, editTodo, can
     // submit
     const submitHandler = (e) => {
         const todoListValue = {
-            userId: +password,
+            password: +password,
             title: item,
             completed: false,
         };
@@ -57,7 +57,7 @@ const TodoListForm = ({ setEditFormVisibility, editFormVisibility, editTodo, can
         setItem('');
         setUser(false);
     };
-
+    !checkUserLogin ? (document.title = 'LOGIN') : (document.title = 'LOGOUT');
     return (
         <>
             {!checkUserLogin ? (
@@ -79,7 +79,7 @@ const TodoListForm = ({ setEditFormVisibility, editFormVisibility, editTodo, can
                                 <Col md={12} lg={12}>
                                     <Form.Control
                                         ref={focus2}
-                                        type="password"
+                                        type="text"
                                         value={password || ''}
                                         onChange={(e) => setPassword(e.target.value)}
                                         placeholder="Password"
