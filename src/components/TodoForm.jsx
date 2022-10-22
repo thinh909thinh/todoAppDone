@@ -65,8 +65,8 @@ const TodoListForm = ({ setEditFormVisibility, editFormVisibility, editTodo, can
                     <Form className="mx-2 my-2" onSubmit={submitHandler}>
                         <Form.Group controlId="inputList">
                             <Row>
-                                <div className="text-center">Add your todo-item</div>
-                                <Col md={12} lg={12}>
+                                <div className="text-center">Enter your user name and password</div>
+                                <Col md={12} lg={12} className="mb-4">
                                     <Form.Control
                                         ref={focus}
                                         type="text"

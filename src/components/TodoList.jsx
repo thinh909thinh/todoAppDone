@@ -54,54 +54,55 @@ const TodoList = ({ handleEditClick, editFormVisibility }) => {
                     </main>
                 </>
             )}
-            {!checkUserLogin && (
-                <ListGroup className="ListscrollY">
-                    {todoList.map((data, index) => (
-                        <ListGroup.Item
-                            className=" mb-1"
-                            variant={data.complete === true ? 'success' : 'primary'}
-                            key={data.id}
-                        >
-                            <Row>
-                                <Col xl={12} xxl={12} lg={12} md={12} xs={12} style={{ overflow: 'hidden' }}>
-                                    {index + 1}: Name - {data.title} : password - {data.id}
-                                </Col>
+            {
+                !checkUserLogin && ''
+                //     <ListGroup className="ListscrollY">
+                //     {todoList.map((data, index) => (
+                //         <ListGroup.Item
+                //             className=" mb-1"
+                //             variant={data.complete === true ? 'success' : 'primary'}
+                //             key={data.id}
+                //         >
+                //             <Row>
+                //                 <Col xl={12} xxl={12} lg={12} md={12} xs={12} style={{ overflow: 'hidden' }}>
+                //                     {index + 1}: Name - {data.title} : password - {data.id}
+                //                 </Col>
 
-                                {editFormVisibility === false && (
-                                    <>
-                                        <Col
-                                            xl={2}
-                                            xxl={2}
-                                            lg={2}
-                                            md={2}
-                                            xs={2}
-                                            style={{ display: 'flex', justifyContent: 'flex-end' }}
-                                        ></Col>
+                //                 {editFormVisibility === false && (
+                //                     <>
+                //                         <Col
+                //                             xl={2}
+                //                             xxl={2}
+                //                             lg={2}
+                //                             md={2}
+                //                             xs={2}
+                //                             style={{ display: 'flex', justifyContent: 'flex-end' }}
+                //                         ></Col>
 
-                                        <Col
-                                            xl={2}
-                                            xxl={2}
-                                            lg={2}
-                                            md={2}
-                                            xs={2}
-                                            style={{ display: 'flex', justifyContent: 'flex-end' }}
-                                        ></Col>
+                //                         <Col
+                //                             xl={2}
+                //                             xxl={2}
+                //                             lg={2}
+                //                             md={2}
+                //                             xs={2}
+                //                             style={{ display: 'flex', justifyContent: 'flex-end' }}
+                //                         ></Col>
 
-                                        <Col
-                                            xl={2}
-                                            xll={2}
-                                            lg={2}
-                                            md={2}
-                                            xs={2}
-                                            style={{ display: 'flex', justifyContent: 'flex-end' }}
-                                        ></Col>
-                                    </>
-                                )}
-                            </Row>
-                        </ListGroup.Item>
-                    ))}
-                </ListGroup>
-            )}
+                //                         <Col
+                //                             xl={2}
+                //                             xll={2}
+                //                             lg={2}
+                //                             md={2}
+                //                             xs={2}
+                //                             style={{ display: 'flex', justifyContent: 'flex-end' }}
+                //                         ></Col>
+                //                     </>
+                //                 )}
+                //             </Row>
+                //         </ListGroup.Item>
+                //     ))}
+                // </ListGroup>
+            }
         </>
     );
 };
